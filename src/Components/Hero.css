@@ -1,0 +1,98 @@
+.hero-section {
+ background-image: 
+                    url('https://i.pinimg.com/1200x/fa/d1/d0/fad1d0ad7e159731aabe840e8f8e80c6.jpg');
+  height: 600px; /* Slightly taller for more impact */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; /* Stack H1 above the Search Bar */
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 50px 50px; 
+  position: relative;
+  margin-bottom: 100px;
+}
+
+h1 {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 800px;
+  /* Ensure H1 is visible above the overlay */
+  z-index: 2; 
+}.hero-section {
+  /* This applies a 50% black tint over the image */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+              url(https://i.pinimg.com/1200x/2d/22/4c/2d224cc8215381b9d128524a67e5a1d5.jpg);
+  
+  height: 600px; 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 50px 50px; 
+  position: relative;
+  margin-bottom: 100px;
+}
+
+h1 {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 800px;
+  
+  z-index: 2; 
+}
+.search-container{
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  display: flex;
+  align-items: center;    
+  justify-content: center;
+  min-height: 10vh;       
+  padding: 20px;
+  padding-left: 15px;
+  border-radius: 20px;
+  align-items: center;
+  
+  display: flex;
+  width: 150%;
+
+}
+label{
+
+    width: 50%;
+    color: black;
+    font-size: 2em;
+    display: flex;
+
+}
+.search-field{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+select{
+
+    width: 100%;
+
+    height: 50%;
+
+    font-size: 2rem;
+    border: none;
+
+}
+.search-btn{
+    font-size: 2rem;
+    justify-content: center;
+    padding: 7px;
+}
+/* .hero-content{ */
+  /*  */

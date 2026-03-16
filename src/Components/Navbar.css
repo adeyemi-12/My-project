@@ -1,0 +1,41 @@
+.navs{
+    display:flex;
+    font-size: 2rem;
+    justify-content:  space-between;
+    align-items: center;
+    text-align: center;
+    max-width: 30000px;
+    
+    
+    
+
+}
+.big{
+    color: black;
+}
+.btn{
+    height: 40px;
+    width: fit-content;
+    background-color: green;
+    border-radius: 10px;
+    border: 2px ;
+    color: white;
+    padding: 10px;
+}
+.btn:hover{
+    background-color: chartreuse;
+     text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: blue;
+}
+.bold{
+    font-weight: 500;
+}
+a{
+    font-weight: 100;
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    font-weight: 900;
+}
