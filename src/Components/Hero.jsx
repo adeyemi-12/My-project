@@ -1,32 +1,31 @@
 import "./Hero.css"
 
-function Hero  ()  {
-  
+const Hero = () => {
   return (
-    <section className="hero-section">
+    <div className="hero-container">
+      {/* Your background image is likely here or in CSS */}
       <div className="hero-content">
-        <h1>Your Reliable Ally in Worldwide Real Estate</h1>
+        <p className="hero-subtitle">Your Reliable Ally In Worldwide Real Estate</p>
         
-        {/* Floating Search Bar */}
-        <div className="search-container">
-          <div className="search-field">
-            <label>Type</label>
+        {/* The Search Filter Bar */}
+        <div className="search-filter-wrapper">
+          <div className="filter-item">
+            <span>Type</span>
             <select><option>Duplex</option></select>
           </div>
-          <div className="search-field">
-            <label>Price</label>
+          <div className="filter-item">
+            <span>Price</span>
             <select><option>$2k - $5k</option></select>
           </div>
-          <div className="search-field">
-            <label>Area</label>
+          <div className="filter-item">
+            <span>Area</span>
             <select><option>Lagos, Nigeria</option></select>
           </div>
-          <button className="search-btn">
-            <i className="bi bi-search"></i> Search
-          </button>
+          <button className="search-submit">Search</button>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
+
 export default Hero;

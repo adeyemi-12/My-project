@@ -1,60 +1,123 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './signup.css';
 
-const Signup = () => {
+const Signup = ({ onSignupSuccess }) => {
+  const navigate = useNavigate();
+  
+  // State management
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    password: '',
+    confirmPassword: '',
+    agreed: false
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleProceed = (e) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // 1. Notify Navbar to hide the "Sign-Up" button
+    if (onSignupSuccess) onSignupSuccess();
+
+    // 2. Show the success view locally
+    setIsSubmitted(true);
+
+    // 3. Redirect to Home after 2 seconds
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
+  };
+
   return (
-    <div className="form-container">
-      <div className="form-card">
-        <h1 className="form-title">Sign Up</h1>
-        <p className="form-subtitle">
-          Get started with an account on <span className="brand-text">Renteae</span>
-        </p>
+    <div className="signup-wrapper">
+      <div className="signup-container">
+        {!isSubmitted ? (
+          <>
+            <h1>Sign Up</h1>
+            <p className="header-subtitle">
+              Get started with an account on <span className="brand">Renteae</span>
+            </p>
 
-        {/* Google Sign Up Button */}
-        <button className="google-btn">
-          <img 
-            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/0/google.svg" 
-            alt="Google icon" 
-          />
-          Sign up with Google
-        </button>
+            <button type="button" className="google-signup">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" />
+              Sign up with Google
+            </button>
 
-        {/* Divider */}
-        <div className="divider">
-          <span>or</span>
-        </div>
+            <div className="or-divider">or</div>
 
-        {/* Input Fields */}
-        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
-          <div className="input-group">
-            <input type="text" placeholder="Full Name" className="input-field active" />
+            <form className="signup-form" onSubmit={handleProceed}>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                className="input-field primary-input"
+                required
+                onChange={handleChange}
+              />
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                className="input-field"
+                required
+                onChange={handleChange}
+              />
+
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                className="input-field"
+                required
+                onChange={handleChange}
+              />
+
+              <span className="hint-text">At least 8 characters</span>
+
+              <div className="terms-section">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="agreed"
+                  checked={formData.agreed}
+                  onChange={handleChange}
+                />
+                <label htmlFor="terms">
+                  By registering you agree with our <a href="#">Terms & Conditions</a>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                className="proceed-btn"
+                disabled={!formData.agreed}
+              >
+                Proceed
+              </button>
+            </form>
+          </>
+        ) : (
+          <div className="success-view">
+            <div className="success-icon">✓</div>
+            <h2>Welcome!</h2>
+            <p>Account for <strong>{formData.fullName}</strong> created successfully.</p>
+            <p className="redirect-text">Redirecting to home...</p>
           </div>
-          
-          <div className="input-group">
-            <input type="password" placeholder="Password" className="input-field" />
-          </div>
-
-          <div className="input-group">
-            <input type="password" placeholder="Confirm Password" className="input-field" />
-            <span className="helper-text">At least 8 characters</span>
-          </div>
-
-          {/* Terms and Conditions */}
-          <div className="terms-container">
-            <input type="checkbox" id="terms" />
-            <label htmlFor="terms">
-              By registering you agree with our <span className="link-text">Terms & Conditions</span>
-            </label>
-          </div>
-
-          {/* Proceed Button */}
-          <button type="submit" className="proceed-btn">Proceed</button>
-        </form>
-
-        {/* Footer Link */}
-        <p className="footer-text">
-          Already have an account? <span className="link-text font-bold">Sign In</span>
-        </p>
+        )}
       </div>
     </div>
   );

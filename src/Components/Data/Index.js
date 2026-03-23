@@ -2,6 +2,7 @@ const apartmentList = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+    descripition:"Hello",
     location: "Sunnyvale, CA",
     title: "Serenity Ridge Villa",
     beds: 3, baths: 2, sqft: "2,100", price: "3,600"
